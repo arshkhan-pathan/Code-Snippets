@@ -11,6 +11,10 @@
       </u-button>
     </section>
   </aside>
+  <splitpanes>
+
+  <pane>
+
   <section class="middle-block" :class="{ hide: snippet }">
     <snippet-tools
       v-model:sort="conditions.sort"
@@ -22,6 +26,8 @@
       <snippet-list :items="snippets" @snippets:delete="deleteSnippet" v-model:selected="snippet" />
     </u-scroll>
   </section>
+  </pane>
+<pane>
   <section class="right-block" :class="{ hide: !snippet }">
     <code-editor
       v-model="snippet"
@@ -31,6 +37,8 @@
       v-if="snippet"
     />
   </section>
+</pane>
+</splitpanes>
   <u-notify />
 </template>
 
@@ -47,6 +55,8 @@ import menu from '@/data/menu';
 import { snippetEntity } from '@/data/snippetEntity';
 import SnippetStorage from '@/storage/snippet';
 import globalState from '@/globalState';
+import { Splitpanes, Pane } from 'splitpanes'
+import 'splitpanes/dist/splitpanes.css'
 
 const notify = inject('notify');
 const sidebar = ref(false);
@@ -257,5 +267,23 @@ body {
   .m-button {
     display: inline-flex;
   }
+
+  
 }
+
+.splitpanes {background-color: #f8f8f8;}
+
+.splitpanes__splitter {background-color: #ccc;position: relative;}
+.splitpanes__splitter:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: opacity 0.4s;
+  opacity: 0;
+  z-index: 1;
+}
+.splitpanes__splitter:hover:before {opacity: 1;}
+.splitpanes--vertical > .splitpanes__splitter:before {left: -30px;right: -30px;height: 100%;}
+.splitpanes--horizontal > .splitpanes__splitter:before {top: -30px;bottom: -30px;width: 100%;}
 </style>
