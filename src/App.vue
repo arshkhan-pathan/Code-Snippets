@@ -112,7 +112,7 @@ const paginate = async (skip) => {
   }
 };
 
-const openGitHub = () => window.open('https://github.com/dd3v/snippets.ninja', '_blank');
+const openGitHub = () => window.open('https://github.com/arshkhan-pathan/Code-Snippets', '_blank');
 
 watch(
   snippet,

@@ -1,7 +1,7 @@
 import { reactive, readonly } from 'vue';
 
 const state = reactive({
-  theme: 'light',
+  theme:  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : "light" ,
   profile: {},
   token: '',
 });
