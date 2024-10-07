@@ -13,7 +13,7 @@ const globalState = {
     localStorage.setItem('theme', theme);
   },
   getTheme: () => {
-    state.theme = localStorage.getItem('theme') ?? 'light';
+    state.theme = localStorage.getItem('theme') ?? state.theme;
     return state.theme;
   },
   toggleTheme: () => {
